@@ -17,6 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode!
 
     var ufoTimer: Timer?
+    var rocketTimer: Timer?
 
     let ufoCategory: UInt32 = 0x1 << 0
     let rocketCategory: UInt32 = 0x1 << 1
@@ -27,6 +28,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+        self.view!.addGestureRecognizer(longPressRecognizer)
 
         starfall = SKEmitterNode(fileNamed: "Starfall")
         starfall.position = CGPoint(x: 0, y: 1000)
@@ -137,8 +140,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    override func didSimulatePhysics() {
+    @objc func longPressed(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.began {
+            rocketTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true, block: { (timer) in
+                self.shootRocket()
+            })
+        } else if (sender.state == UIGestureRecognizer.State.ended){
+            rocketTimer?.invalidate()
+        }
+    }
 
+    override func didSimulatePhysics() {
         spaceship.position.x += xAcceleration * 50
 
         if spaceship.position.x < -self.frame.size.width/2 - 180 {
