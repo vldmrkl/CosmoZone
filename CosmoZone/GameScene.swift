@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var starfall: SKEmitterNode!
     var spaceship: SKSpriteNode!
     var score: Int = 0
@@ -17,7 +17,13 @@ class GameScene: SKScene {
 
     var ufoTimer: Timer?
 
+    let ufoCategory: UInt32 = 0x1 << 0
+    let rocketCategory: UInt32 = 0x1 << 1
+    let spaceshipCategory: UInt32 = 0x1 << 2
+
     override func didMove(to view: SKView) {
+        self.physicsWorld.contactDelegate = self
+
         starfall = SKEmitterNode(fileNamed: "Starfall")
         starfall.position = CGPoint(x: 0, y: 1000)
         starfall.advanceSimulationTime(10)
@@ -26,6 +32,15 @@ class GameScene: SKScene {
 
         spaceship = SKSpriteNode(imageNamed: "spaceship")
         spaceship.position = CGPoint(x: 0, y: -self.frame.size.height/2 + 200)
+
+
+        spaceship.physicsBody = SKPhysicsBody(rectangleOf: spaceship.size)
+        spaceship.physicsBody?.affectedByGravity = false
+
+        spaceship.physicsBody?.categoryBitMask = spaceshipCategory
+        spaceship.physicsBody?.contactTestBitMask = ufoCategory
+        spaceship.physicsBody?.collisionBitMask = 0
+
         self.addChild(spaceship)
 
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
@@ -36,12 +51,23 @@ class GameScene: SKScene {
         })
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        shootRocket()
+    }
+
     func createUFO(){
         let ufo = SKSpriteNode(imageNamed: "ufo")
         ufo.size = CGSize(width: 150, height: 75)
         ufo.physicsBody = SKPhysicsBody(rectangleOf: ufo.size)
+
         ufo.physicsBody?.affectedByGravity = false
-        addChild(ufo)
+        ufo.physicsBody?.isDynamic = true
+
+        ufo.physicsBody?.categoryBitMask = ufoCategory
+        ufo.physicsBody?.contactTestBitMask = rocketCategory | spaceshipCategory
+        ufo.physicsBody?.collisionBitMask = 0
+
+        self.addChild(ufo)
 
         let minX = -size.width/2 + ufo.size.width
         let maxX = size.width/2 - ufo.size.width
@@ -56,7 +82,45 @@ class GameScene: SKScene {
         ufo.run(moveUFO)
     }
 
-    override func update(_ currentTime: TimeInterval) {
+    func shootRocket() {
+        let rocket = SKSpriteNode(imageNamed: "rocket")
+        rocket.size = CGSize(width: 15, height: 60)
+        rocket.position = spaceship.position
 
+        rocket.physicsBody = SKPhysicsBody(rectangleOf: rocket.size)
+        rocket.physicsBody?.affectedByGravity = false
+        rocket.physicsBody?.isDynamic = false
+
+        rocket.physicsBody?.categoryBitMask = rocketCategory
+        rocket.physicsBody?.contactTestBitMask = ufoCategory
+
+        self.addChild(rocket)
+
+        let flyUP = SKAction.move(to: CGPoint(x: spaceship.position.x, y: self.frame.size.height+50), duration: 1)
+        let moveRocket = SKAction.sequence([flyUP, SKAction.removeFromParent()])
+
+        rocket.run(moveRocket)
+    }
+
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.categoryBitMask == ufoCategory && contact.bodyB.categoryBitMask == rocketCategory {
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            score += 1
+            scoreLabel.text = "Score: \(score)"
+        } else if contact.bodyA.categoryBitMask == rocketCategory && contact.bodyB.categoryBitMask == ufoCategory {
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            score += 1
+            scoreLabel.text = "Score: \(score)"
+        } else if contact.bodyA.categoryBitMask == ufoCategory && contact.bodyB.categoryBitMask == spaceshipCategory {
+            contact.bodyA.node?.removeFromParent()
+            score -= 1
+            scoreLabel.text = "Score: \(score)"
+        } else if contact.bodyA.categoryBitMask == spaceshipCategory && contact.bodyB.categoryBitMask == ufoCategory {
+            contact.bodyB.node?.removeFromParent()
+            score -= 1
+            scoreLabel.text = "Score: \(score)"
+        }
     }
 }
