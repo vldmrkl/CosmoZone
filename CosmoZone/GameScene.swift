@@ -28,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
-        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed))
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressure))
         self.view!.addGestureRecognizer(longPressRecognizer)
 
         starfall = SKEmitterNode(fileNamed: "Starfall")
@@ -140,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    @objc func longPressed(sender: UILongPressGestureRecognizer) {
+    @objc func handleLongPressure(sender: UILongPressGestureRecognizer) {
         if sender.state == UIGestureRecognizer.State.began {
             rocketTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true, block: { (timer) in
                 self.shootRocket()
