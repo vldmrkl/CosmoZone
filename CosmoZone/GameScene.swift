@@ -11,6 +11,11 @@ import GameplayKit
 
 class GameScene: SKScene {
     var starfall: SKEmitterNode!
+    var spaceship: SKSpriteNode!
+    var score: Int = 0
+    var scoreLabel: SKLabelNode!
+
+    var ufoTimer: Timer?
 
     override func didMove(to view: SKView) {
         starfall = SKEmitterNode(fileNamed: "Starfall")
@@ -18,6 +23,37 @@ class GameScene: SKScene {
         starfall.advanceSimulationTime(10)
         starfall.zPosition = -1
         self.addChild(starfall)
+
+        spaceship = SKSpriteNode(imageNamed: "spaceship")
+        spaceship.position = CGPoint(x: 0, y: -self.frame.size.height/2 + 200)
+        self.addChild(spaceship)
+
+        scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
+        scoreLabel.text = "Score: \(score)"
+
+        ufoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
+            self.createUFO()
+        })
+    }
+
+    func createUFO(){
+        let ufo = SKSpriteNode(imageNamed: "ufo")
+        ufo.size = CGSize(width: 150, height: 75)
+        ufo.physicsBody = SKPhysicsBody(rectangleOf: ufo.size)
+        ufo.physicsBody?.affectedByGravity = false
+        addChild(ufo)
+
+        let minX = -size.width/2 + ufo.size.width
+        let maxX = size.width/2 - ufo.size.width
+        let range = maxX - minX
+        let randomUfoX = maxX - CGFloat(arc4random_uniform(UInt32(range)))
+
+        ufo.position = CGPoint(x: randomUfoX, y: size.height / 2 + ufo.size.height / 2)
+
+        let flyDown = SKAction.moveBy(x: 0, y: -size.height - ufo.size.height, duration: 4)
+        let moveUFO = SKAction.sequence([flyDown, SKAction.removeFromParent()])
+
+        ufo.run(moveUFO)
     }
 
     override func update(_ currentTime: TimeInterval) {
