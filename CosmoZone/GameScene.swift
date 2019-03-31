@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var starfall: SKEmitterNode!
@@ -21,6 +22,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let rocketCategory: UInt32 = 0x1 << 1
     let spaceshipCategory: UInt32 = 0x1 << 2
 
+    let motionManger = CMMotionManager()
+    var xAcceleration:CGFloat = 0
+
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
 
@@ -32,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         spaceship = SKSpriteNode(imageNamed: "spaceship")
         spaceship.position = CGPoint(x: 0, y: -self.frame.size.height/2 + 200)
-
+        spaceship.zPosition = 1
 
         spaceship.physicsBody = SKPhysicsBody(rectangleOf: spaceship.size)
         spaceship.physicsBody?.affectedByGravity = false
@@ -49,6 +53,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ufoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.createUFO()
         })
+
+        motionManger.accelerometerUpdateInterval = 0.2
+        motionManger.startAccelerometerUpdates(to: OperationQueue.current!) { (data:CMAccelerometerData?, error:Error?) in
+            if let accelerometerData = data {
+                let acceleration = accelerometerData.acceleration
+                self.xAcceleration = CGFloat(acceleration.x) * 0.75 + self.xAcceleration * 0.25
+            }
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -86,6 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let rocket = SKSpriteNode(imageNamed: "rocket")
         rocket.size = CGSize(width: 15, height: 60)
         rocket.position = spaceship.position
+        rocket.zPosition = 0
 
         rocket.physicsBody = SKPhysicsBody(rectangleOf: rocket.size)
         rocket.physicsBody?.affectedByGravity = false
@@ -122,5 +135,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             score -= 1
             scoreLabel.text = "Score: \(score)"
         }
+    }
+
+    override func didSimulatePhysics() {
+
+        spaceship.position.x += xAcceleration * 50
+
+        if spaceship.position.x < -self.frame.size.width/2 - 180 {
+            spaceship.position = CGPoint(x: self.frame.size.width/2, y: spaceship.position.y)
+        }else if spaceship.position.x > self.frame.size.width/2 + 180 {
+            spaceship.position = CGPoint(x: -self.frame.size.width/2, y: spaceship.position.y)
+        }
+
     }
 }
