@@ -23,6 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let rocketCategory: UInt32 = 0x1 << 1
     let spaceshipCategory: UInt32 = 0x1 << 2
 
+    var backgroundMusic: SKAudioNode!
     let motionManger = CMMotionManager()
     var xAcceleration:CGFloat = 0
 
@@ -56,6 +57,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ufoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.createUFO()
         })
+
+        if let musicURL = Bundle.main.url(forResource: "background", withExtension: "mp3") {
+            backgroundMusic = SKAudioNode(url: musicURL)
+            addChild(backgroundMusic)
+        }
 
         motionManger.accelerometerUpdateInterval = 0.2
         motionManger.startAccelerometerUpdates(to: OperationQueue.current!) { (data:CMAccelerometerData?, error:Error?) in
