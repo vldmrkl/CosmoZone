@@ -98,6 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func shootRocket() {
+        self.run(SKAction.playSoundFileNamed("rocket.wav", waitForCompletion: false))
         let rocket = SKSpriteNode(imageNamed: "rocket")
         rocket.size = CGSize(width: 15, height: 60)
         rocket.position = spaceship.position
