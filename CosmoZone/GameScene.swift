@@ -11,6 +11,8 @@ import GameplayKit
 import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var viewController: GameViewController!
+
     var explosion: SKEmitterNode!
     var starfall: SKEmitterNode!
     var spaceship: SKSpriteNode!
@@ -163,7 +165,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 livesLeft += "❤️"
             }
         } else {
-
+            backgroundMusic.run(SKAction.stop())
             starfall.particleBirthRate = 0
             rocketTimer?.invalidate()
             ufoTimer?.invalidate()
@@ -176,12 +178,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             self.addChild(explosion)
 
-            _ = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { (timer) in
+            _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: false) { (timer) in
                 self.spaceship.removeFromParent()
             }
             self.enumerateChildNodes(withName: "ufoNode", using: { node, stop in
-                node.run(SKAction.removeFromParent())
+                node.run(SKAction.fadeOut(withDuration: 1))
             })
+
+            _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+                self.viewController.gameOver()
+            }
         }
         livesLabel.text = livesLeft
     }

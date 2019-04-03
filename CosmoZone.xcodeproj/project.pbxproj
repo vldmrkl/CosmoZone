@@ -21,6 +21,7 @@
 		2D7E457C224DDE0B00A08963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D7E457A224DDE0B00A08963 /* LaunchScreen.storyboard */; };
 		2DE7ACAB22552D2800A9AA97 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACAA22552D2800A9AA97 /* explosion.wav */; };
 		2DE7ACB322552D9F00A9AA97 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB222552D9F00A9AA97 /* Explosion.sks */; };
+		2DE7ACB722553CDA00A9AA97 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */; };
 		2DF7490422503A1000F691BE /* Starfall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DF7490322503A1000F691BE /* Starfall.sks */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		2D7E457D224DDE0B00A08963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DE7ACAA22552D2800A9AA97 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		2DE7ACB222552D9F00A9AA97 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
+		2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		2DF7490322503A1000F691BE /* Starfall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfall.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,9 +80,11 @@
 				2D7E456D224DDE0900A08963 /* GameScene.sks */,
 				2D7E456F224DDE0900A08963 /* Actions.sks */,
 				2D7E4571224DDE0900A08963 /* GameScene.swift */,
+				2DE7ACB222552D9F00A9AA97 /* Explosion.sks */,
 				2DF7490322503A1000F691BE /* Starfall.sks */,
 				2D7E4573224DDE0900A08963 /* GameViewController.swift */,
 				2D7E4575224DDE0900A08963 /* Main.storyboard */,
+				2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */,
 				2D05301C2251C1DA00C3AFF1 /* UserViewController.swift */,
 				2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */,
 				2D7E4578224DDE0A00A08963 /* Assets.xcassets */,
@@ -89,7 +93,6 @@
 				2D0867AA22519F0900B4466A /* rocket.wav */,
 				2D7E457A224DDE0B00A08963 /* LaunchScreen.storyboard */,
 				2D7E457D224DDE0B00A08963 /* Info.plist */,
-				2DE7ACB222552D9F00A9AA97 /* Explosion.sks */,
 			);
 			path = CosmoZone;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			files = (
 				2D7E4572224DDE0900A08963 /* GameScene.swift in Sources */,
 				2D05301D2251C1DA00C3AFF1 /* UserViewController.swift in Sources */,
+				2DE7ACB722553CDA00A9AA97 /* GameOverViewController.swift in Sources */,
 				2D7E4574224DDE0900A08963 /* GameViewController.swift in Sources */,
 				2D7E456C224DDE0900A08963 /* AppDelegate.swift in Sources */,
 				2D05301B2251BD5700C3AFF1 /* HomeViewController.swift in Sources */,
