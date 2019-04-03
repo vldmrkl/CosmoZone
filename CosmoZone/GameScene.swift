@@ -11,10 +11,13 @@ import GameplayKit
 import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    var explosion: SKEmitterNode!
     var starfall: SKEmitterNode!
     var spaceship: SKSpriteNode!
     var score: Int = 0
     var scoreLabel: SKLabelNode!
+    var lives: Int = 3
+    var livesLabel: SKLabelNode!
 
     var ufoTimer: Timer?
     var rocketTimer: Timer?
@@ -24,7 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let spaceshipCategory: UInt32 = 0x1 << 2
 
     var backgroundMusic: SKAudioNode!
-    let motionManger = CMMotionManager()
+    let motionManager = CMMotionManager()
     var xAcceleration:CGFloat = 0
 
     override func didMove(to view: SKView) {
@@ -33,7 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view!.addGestureRecognizer(longPressRecognizer)
 
         starfall = SKEmitterNode(fileNamed: "Starfall")
-        starfall.position = CGPoint(x: 0, y: 1000)
+        starfall.position = CGPoint(x: 0, y: 700)
         starfall.advanceSimulationTime(10)
         starfall.zPosition = -1
         self.addChild(starfall)
@@ -54,6 +57,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
         scoreLabel.text = "Score: \(score)"
 
+        livesLabel = childNode(withName: "livesLabel") as? SKLabelNode
+        livesLabel.text = "❤️❤️❤️"
+
         ufoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.createUFO()
         })
@@ -63,8 +69,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(backgroundMusic)
         }
 
-        motionManger.accelerometerUpdateInterval = 0.2
-        motionManger.startAccelerometerUpdates(to: OperationQueue.current!) { (data:CMAccelerometerData?, error:Error?) in
+        motionManager.accelerometerUpdateInterval = 0.2
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { (data:CMAccelerometerData?, error:Error?) in
             if let accelerometerData = data {
                 let acceleration = accelerometerData.acceleration
                 self.xAcceleration = CGFloat(acceleration.x) * 0.75 + self.xAcceleration * 0.25
@@ -73,7 +79,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        shootRocket()
+        if(lives > 0){
+            shootRocket()
+        }
     }
 
     func createUFO(){
@@ -87,6 +95,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ufo.physicsBody?.categoryBitMask = ufoCategory
         ufo.physicsBody?.contactTestBitMask = rocketCategory | spaceshipCategory
         ufo.physicsBody?.collisionBitMask = 0
+
+        ufo.name = "ufoNode"
 
         self.addChild(ufo)
 
@@ -138,13 +148,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             scoreLabel.text = "Score: \(score)"
         } else if contact.bodyA.categoryBitMask == ufoCategory && contact.bodyB.categoryBitMask == spaceshipCategory {
             contact.bodyA.node?.removeFromParent()
-            score -= 1
-            scoreLabel.text = "Score: \(score)"
+            handleSpaceshipCollision()
         } else if contact.bodyA.categoryBitMask == spaceshipCategory && contact.bodyB.categoryBitMask == ufoCategory {
             contact.bodyB.node?.removeFromParent()
-            score -= 1
-            scoreLabel.text = "Score: \(score)"
+            handleSpaceshipCollision()
         }
+    }
+
+    private func handleSpaceshipCollision() {
+        lives -= 1
+        var livesLeft = ""
+        if(lives > 0){
+            for _ in 1...lives {
+                livesLeft += "❤️"
+            }
+        } else {
+
+            starfall.particleBirthRate = 0
+            rocketTimer?.invalidate()
+            ufoTimer?.invalidate()
+            self.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false))
+            explosion = SKEmitterNode(fileNamed: "Explosion")
+            explosion.position = spaceship.position
+            explosion.advanceSimulationTime(25)
+            explosion.zPosition = 5
+            explosion.particleBirthRate = 0
+
+            self.addChild(explosion)
+
+            _ = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { (timer) in
+                self.spaceship.removeFromParent()
+            }
+            self.enumerateChildNodes(withName: "ufoNode", using: { node, stop in
+                node.run(SKAction.removeFromParent())
+            })
+        }
+        livesLabel.text = livesLeft
     }
 
     @objc func handleLongPressure(sender: UILongPressGestureRecognizer) {
@@ -158,12 +197,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     override func didSimulatePhysics() {
-        spaceship.position.x += xAcceleration * 50
+        if(lives > 0){
+            spaceship.position.x += xAcceleration * 50
 
-        if spaceship.position.x < -self.frame.size.width/2 - 180 {
-            spaceship.position = CGPoint(x: self.frame.size.width/2, y: spaceship.position.y)
-        }else if spaceship.position.x > self.frame.size.width/2 + 180 {
-            spaceship.position = CGPoint(x: -self.frame.size.width/2, y: spaceship.position.y)
+            if spaceship.position.x < -self.frame.size.width/2 - 180 {
+                spaceship.position = CGPoint(x: self.frame.size.width/2, y: spaceship.position.y)
+            }else if spaceship.position.x > self.frame.size.width/2 + 180 {
+                spaceship.position = CGPoint(x: -self.frame.size.width/2, y: spaceship.position.y)
+            }
         }
 
     }
