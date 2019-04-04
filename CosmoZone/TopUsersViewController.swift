@@ -40,6 +40,7 @@ class TopUsersViewController: UIViewController, UITableViewDataSource {
         } catch{
             print("Couldn't fetch data :(")
         }
+        scores.sort(by: { $0.score > $1.score })
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,7 +49,6 @@ class TopUsersViewController: UIViewController, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "scoreTableCell")!
-
         let text = scores[indexPath.row].name + ": " + String(scores[indexPath.row].score)
         cell.textLabel?.text = text
         cell.textLabel?.textColor = .white
