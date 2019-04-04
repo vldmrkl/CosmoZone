@@ -181,7 +181,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
 
             backgroundMusic.run(SKAction.stop())
-            starfall.particleBirthRate = 0
             rocketTimer?.invalidate()
             ufoTimer?.invalidate()
             self.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false))
