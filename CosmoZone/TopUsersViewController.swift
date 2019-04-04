@@ -41,6 +41,9 @@ class TopUsersViewController: UIViewController, UITableViewDataSource {
             print("Couldn't fetch data :(")
         }
         scores.sort(by: { $0.score > $1.score })
+        if scores.count > 10 {
+            scores.removeLast(scores.count-10)
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
