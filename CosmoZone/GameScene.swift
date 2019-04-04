@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import CoreData
 import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -166,6 +167,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 livesLeft += "❤️"
             }
         } else {
+            let name = UserDefaults.standard.string(forKey: "name") ?? ""
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "Scores", in: context)
+            let newScore = NSManagedObject(entity: entity!, insertInto: context)
+            newScore.setValue(name, forKey: "name")
+            newScore.setValue(score, forKey: "score")
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
+
             backgroundMusic.run(SKAction.stop())
             starfall.particleBirthRate = 0
             rocketTimer?.invalidate()

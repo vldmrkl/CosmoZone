@@ -32,6 +32,7 @@ class UserViewController: UIViewController, UITextFieldDelegate {
             errorLabel.isHidden = false
         } else {
             errorLabel.isHidden = true
+            UserDefaults.standard.set(userNameInput.text, forKey: "name")
             let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "GameVC") as! GameViewController
             self.present(gameVC, animated: true, completion: nil)
         }

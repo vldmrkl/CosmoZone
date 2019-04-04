@@ -23,6 +23,8 @@
 		2DE7ACB322552D9F00A9AA97 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB222552D9F00A9AA97 /* Explosion.sks */; };
 		2DE7ACB722553CDA00A9AA97 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */; };
 		2DE7ACB922557B6F00A9AA97 /* collision.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB822557B6F00A9AA97 /* collision.wav */; };
+		2DE7ACBC2255888F00A9AA97 /* CosmoZone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7ACBA2255888F00A9AA97 /* CosmoZone.xcdatamodeld */; };
+		2DE7ACBE22558E5100A9AA97 /* TopUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7ACBD22558E5100A9AA97 /* TopUsersViewController.swift */; };
 		2DF7490422503A1000F691BE /* Starfall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DF7490322503A1000F691BE /* Starfall.sks */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +47,8 @@
 		2DE7ACB222552D9F00A9AA97 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		2DE7ACB822557B6F00A9AA97 /* collision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collision.wav; sourceTree = "<group>"; };
+		2DE7ACBB2255888F00A9AA97 /* CosmoZone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CosmoZone.xcdatamodel; sourceTree = "<group>"; };
+		2DE7ACBD22558E5100A9AA97 /* TopUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUsersViewController.swift; sourceTree = "<group>"; };
 		2DF7490322503A1000F691BE /* Starfall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfall.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,16 +88,18 @@
 				2D7E4571224DDE0900A08963 /* GameScene.swift */,
 				2DE7ACB222552D9F00A9AA97 /* Explosion.sks */,
 				2DF7490322503A1000F691BE /* Starfall.sks */,
-				2D7E4573224DDE0900A08963 /* GameViewController.swift */,
 				2D7E4575224DDE0900A08963 /* Main.storyboard */,
+				2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */,
+				2D7E4573224DDE0900A08963 /* GameViewController.swift */,
 				2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */,
 				2D05301C2251C1DA00C3AFF1 /* UserViewController.swift */,
-				2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */,
+				2DE7ACBD22558E5100A9AA97 /* TopUsersViewController.swift */,
 				2D7E4578224DDE0A00A08963 /* Assets.xcassets */,
 				2D0530182251A0DA00C3AFF1 /* background.mp3 */,
 				2DE7ACAA22552D2800A9AA97 /* explosion.wav */,
 				2DE7ACB822557B6F00A9AA97 /* collision.wav */,
 				2D0867AA22519F0900B4466A /* rocket.wav */,
+				2DE7ACBA2255888F00A9AA97 /* CosmoZone.xcdatamodeld */,
 				2D7E457A224DDE0B00A08963 /* LaunchScreen.storyboard */,
 				2D7E457D224DDE0B00A08963 /* Info.plist */,
 			);
@@ -181,6 +187,8 @@
 			files = (
 				2D7E4572224DDE0900A08963 /* GameScene.swift in Sources */,
 				2D05301D2251C1DA00C3AFF1 /* UserViewController.swift in Sources */,
+				2DE7ACBC2255888F00A9AA97 /* CosmoZone.xcdatamodeld in Sources */,
+				2DE7ACBE22558E5100A9AA97 /* TopUsersViewController.swift in Sources */,
 				2DE7ACB722553CDA00A9AA97 /* GameOverViewController.swift in Sources */,
 				2D7E4574224DDE0900A08963 /* GameViewController.swift in Sources */,
 				2D7E456C224DDE0900A08963 /* AppDelegate.swift in Sources */,
@@ -384,6 +392,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2DE7ACBA2255888F00A9AA97 /* CosmoZone.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2DE7ACBB2255888F00A9AA97 /* CosmoZone.xcdatamodel */,
+			);
+			currentVersion = 2DE7ACBB2255888F00A9AA97 /* CosmoZone.xcdatamodel */;
+			path = CosmoZone.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2D7E4560224DDE0900A08963 /* Project object */;
 }
