@@ -16,11 +16,11 @@ class GameOverViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
+        playAgainButton.layer.borderWidth = 1
+        playAgainButton.layer.cornerRadius = 12
 
-    @IBAction func showGameScene(_ sender: Any) {
-        
+        mainMenuButton.layer.borderWidth = 1
+        mainMenuButton.layer.cornerRadius = 12
     }
 
     func gameOver() {

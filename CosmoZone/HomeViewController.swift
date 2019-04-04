@@ -19,13 +19,9 @@ class HomeViewController: UIViewController {
     }
 
     func setUpButtons() {
-        newGameButton.backgroundColor = .clear
-        newGameButton.layer.borderColor = UIColor.green.cgColor
         newGameButton.layer.borderWidth = 1
         newGameButton.layer.cornerRadius = 12
 
-        top10Button.backgroundColor = .clear
-        top10Button.layer.borderColor = UIColor.green.cgColor
         top10Button.layer.borderWidth = 1
         top10Button.layer.cornerRadius = 12
     }

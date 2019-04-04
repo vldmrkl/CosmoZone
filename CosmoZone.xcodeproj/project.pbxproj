@@ -22,6 +22,7 @@
 		2DE7ACAB22552D2800A9AA97 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACAA22552D2800A9AA97 /* explosion.wav */; };
 		2DE7ACB322552D9F00A9AA97 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB222552D9F00A9AA97 /* Explosion.sks */; };
 		2DE7ACB722553CDA00A9AA97 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */; };
+		2DE7ACB922557B6F00A9AA97 /* collision.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB822557B6F00A9AA97 /* collision.wav */; };
 		2DF7490422503A1000F691BE /* Starfall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DF7490322503A1000F691BE /* Starfall.sks */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		2DE7ACAA22552D2800A9AA97 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		2DE7ACB222552D9F00A9AA97 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 		2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		2DE7ACB822557B6F00A9AA97 /* collision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collision.wav; sourceTree = "<group>"; };
 		2DF7490322503A1000F691BE /* Starfall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfall.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +92,7 @@
 				2D7E4578224DDE0A00A08963 /* Assets.xcassets */,
 				2D0530182251A0DA00C3AFF1 /* background.mp3 */,
 				2DE7ACAA22552D2800A9AA97 /* explosion.wav */,
+				2DE7ACB822557B6F00A9AA97 /* collision.wav */,
 				2D0867AA22519F0900B4466A /* rocket.wav */,
 				2D7E457A224DDE0B00A08963 /* LaunchScreen.storyboard */,
 				2D7E457D224DDE0B00A08963 /* Info.plist */,
@@ -164,6 +167,7 @@
 				2D7E457C224DDE0B00A08963 /* LaunchScreen.storyboard in Resources */,
 				2DE7ACB322552D9F00A9AA97 /* Explosion.sks in Resources */,
 				2D7E4570224DDE0900A08963 /* Actions.sks in Resources */,
+				2DE7ACB922557B6F00A9AA97 /* collision.wav in Resources */,
 				2D0867AC22519F0900B4466A /* rocket.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

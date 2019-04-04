@@ -161,6 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lives -= 1
         var livesLeft = ""
         if(lives > 0){
+            self.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false))
             for _ in 1...lives {
                 livesLeft += "❤️"
             }
