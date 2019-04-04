@@ -24,6 +24,7 @@ class TopUsersViewController: UIViewController, UITableViewDataSource {
 
         tableView.dataSource = self
         tableView.backgroundColor = .clear
+        tableView.center.x = self.view.center.x
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
