@@ -143,11 +143,64 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyA.node?.removeFromParent()
             contact.bodyB.node?.removeFromParent()
             score += 1
+            if score > 20{
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            } else if score > 35 {
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            } else if score > 45 {
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            } else if score > 55 {
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            } else if score > 65 {
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            }
             scoreLabel.text = "Score: \(score)"
         } else if contact.bodyA.categoryBitMask == rocketCategory && contact.bodyB.categoryBitMask == ufoCategory {
             contact.bodyA.node?.removeFromParent()
             contact.bodyB.node?.removeFromParent()
             score += 1
+            if score > 20{
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            } else if score > 35 {
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            } else if score > 45 {
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            } else if score > 55 {
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            } else if score > 65 {
+                ufoTimer?.invalidate()
+                ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { (timer) in
+                    self.createUFO()
+                })
+            }
+
             scoreLabel.text = "Score: \(score)"
         } else if contact.bodyA.categoryBitMask == ufoCategory && contact.bodyB.categoryBitMask == spaceshipCategory {
             contact.bodyA.node?.removeFromParent()
