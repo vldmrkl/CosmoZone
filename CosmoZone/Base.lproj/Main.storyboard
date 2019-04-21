@@ -104,40 +104,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7Ms-xB-tvQ">
-                                <rect key="frame" x="76" y="123.00000000000001" width="262.33333333333331" height="233.33333333333337"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Cosmos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvt-Of-hxK">
-                                        <rect key="frame" x="0.0" y="0.0" width="262.33333333333331" height="83.333333333333329"/>
-                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Wars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zB9-xY-e1w">
-                                        <rect key="frame" x="44" y="91.333333333333343" width="174" height="83.333333333333343"/>
-                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="72"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="🚀👽🛸" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQN-Rt-gfd">
-                                        <rect key="frame" x="47" y="182.66666666666669" width="168" height="50.666666666666657"/>
-                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="56"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="XaS-tw-jXh">
-                                <rect key="frame" x="57" y="418" width="300" height="164"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="CosmoZone" translatesAutoresizingMaskIntoConstraints="NO" id="zi0-p0-XEr">
+                                <rect key="frame" x="87" y="170" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="1tt-IT-cMj"/>
+                                    <constraint firstAttribute="height" constant="128" id="kl2-tO-OBv"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="XaS-tw-jXh">
+                                <rect key="frame" x="72" y="373" width="270" height="164"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6CN-5F-h9O">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="70"/>
-                                        <color key="backgroundColor" red="0.157895597" green="0.76098508880000004" blue="0.050185540760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="270" height="70"/>
+                                        <color key="backgroundColor" name="linkColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="lUv-7L-LFM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                        <state key="normal" title="New Game">
+                                        <state key="normal" title="Play">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -145,13 +129,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHh-V6-98r">
-                                        <rect key="frame" x="0.0" y="94" width="300" height="70"/>
-                                        <color key="backgroundColor" red="0.157895597" green="0.76098508880000004" blue="0.050185540760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="0.0" y="94" width="270" height="70"/>
+                                        <color key="backgroundColor" name="linkColor" catalog="System" colorSpace="catalog"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="Isp-Ge-UZM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                        <state key="normal" title="Top 10">
+                                        <state key="normal" title="Store">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -160,17 +144,17 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Q2R-Wf-3mN"/>
+                                    <constraint firstAttribute="width" constant="270" id="hbY-gS-3Gs"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.039459073604060868" green="0.039459073604060868" blue="0.039459073604060868" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="XaS-tw-jXh" firstAttribute="centerX" secondItem="UDE-Kd-nNF" secondAttribute="centerX" id="5Qw-2I-aY3"/>
-                            <constraint firstItem="7Ms-xB-tvQ" firstAttribute="centerX" secondItem="UDE-Kd-nNF" secondAttribute="centerX" id="Wl5-oF-7T2"/>
-                            <constraint firstItem="7Ms-xB-tvQ" firstAttribute="top" secondItem="6f0-se-H3l" secondAttribute="top" constant="103" id="a07-Jx-j50"/>
-                            <constraint firstItem="XaS-tw-jXh" firstAttribute="top" secondItem="7Ms-xB-tvQ" secondAttribute="bottom" constant="61.666666666666629" id="cCF-Bz-IHe"/>
-                            <constraint firstItem="6f0-se-H3l" firstAttribute="bottom" secondItem="XaS-tw-jXh" secondAttribute="bottom" constant="154" id="gOU-5O-NEl"/>
+                            <constraint firstItem="6f0-se-H3l" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XaS-tw-jXh" secondAttribute="bottom" constant="35" id="MaI-ow-WCQ"/>
+                            <constraint firstItem="zi0-p0-XEr" firstAttribute="centerX" secondItem="UDE-Kd-nNF" secondAttribute="centerX" id="Nk1-Tf-LhJ"/>
+                            <constraint firstItem="zi0-p0-XEr" firstAttribute="top" relation="lessThanOrEqual" secondItem="6f0-se-H3l" secondAttribute="top" constant="150" id="pKh-3w-hU4"/>
+                            <constraint firstItem="XaS-tw-jXh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zi0-p0-XEr" secondAttribute="bottom" constant="75" id="pfj-Zk-8wT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6f0-se-H3l"/>
                     </view>
@@ -323,7 +307,10 @@
             <point key="canvasLocation" x="-907.24637681159425" y="809.51086956521749"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="CosmoZone" width="2810" height="1392"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bhM-Tw-1XB"/>
+        <segue reference="kA7-uz-IZN"/>
     </inferredMetricsTieBreakers>
 </document>
