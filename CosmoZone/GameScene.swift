@@ -50,6 +50,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship = SKSpriteNode(imageNamed: "spaceship")
         spaceship.position = CGPoint(x: 0, y: -self.frame.size.height/2 + 200)
         spaceship.zPosition = 1
+        spaceship.size = CGSize(width: 150, height: 250)
+
 
         spaceship.physicsBody = SKPhysicsBody(rectangleOf: spaceship.size)
         spaceship.physicsBody?.affectedByGravity = false
@@ -96,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     func createUFO(){
         let ufo = SKSpriteNode(imageNamed: "ufo")
-        ufo.size = CGSize(width: 150, height: 75)
+        ufo.size = CGSize(width: 100, height: 50)
         ufo.physicsBody = SKPhysicsBody(rectangleOf: ufo.size)
 
         ufo.physicsBody?.affectedByGravity = false
@@ -155,7 +157,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func shootRocket() {
         self.run(SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false))
         let rocket = SKSpriteNode(imageNamed: "rocket")
-        rocket.size = CGSize(width: 15, height: 60)
+        rocket.size = CGSize(width: 7, height: 40)
         rocket.position = spaceship.position
         rocket.zPosition = 0
 
