@@ -189,7 +189,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xm-nH-4gX">
                                 <rect key="frame" x="57" y="377" width="300" height="70"/>
-                                <color key="backgroundColor" red="0.157895597" green="0.76098508880000004" blue="0.050185540760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="linkColor" catalog="System" colorSpace="catalog"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="CFV-Dr-evg"/>
                                     <constraint firstAttribute="width" constant="300" id="Lrv-au-9GB"/>
