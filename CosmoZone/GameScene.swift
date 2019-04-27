@@ -67,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.createUFO()
         })
 
-        if let musicURL = Bundle.main.url(forResource: "background", withExtension: "mp3") {
+        if let musicURL = Bundle.main.url(forResource: "background", withExtension: "wav") {
             backgroundMusic = SKAudioNode(url: musicURL)
             addChild(backgroundMusic)
         }
@@ -117,7 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func shootRocket() {
-        self.run(SKAction.playSoundFileNamed("rocket.wav", waitForCompletion: false))
+        self.run(SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false))
         let rocket = SKSpriteNode(imageNamed: "rocket")
         rocket.size = CGSize(width: 15, height: 60)
         rocket.position = spaceship.position
@@ -215,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lives -= 1
         var livesLeft = ""
         if(lives > 0){
-            self.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false))
+            self.run(SKAction.playSoundFileNamed("crush.wav", waitForCompletion: false))
             for _ in 1...lives {
                 livesLeft += "❤️"
             }
@@ -236,7 +236,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             backgroundMusic.run(SKAction.stop())
             rocketTimer?.invalidate()
             ufoTimer?.invalidate()
-            self.run(SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false))
+            self.run(SKAction.playSoundFileNamed("crush.wav", waitForCompletion: false))
             explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion.position = spaceship.position
             explosion.advanceSimulationTime(25)
