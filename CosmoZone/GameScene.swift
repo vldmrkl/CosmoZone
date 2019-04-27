@@ -8,7 +8,6 @@
 
 import SpriteKit
 import GameplayKit
-import CoreData
 import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -180,15 +179,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == ufoCategory && contact.bodyB.categoryBitMask == rocketCategory {
             contact.bodyA.node?.removeFromParent()
             contact.bodyB.node?.removeFromParent()
-            score += 1
+            updateScore()
             updateDifficulty()
-            scoreLabel.text = "Score: \(score)"
         } else if contact.bodyA.categoryBitMask == rocketCategory && contact.bodyB.categoryBitMask == ufoCategory {
             contact.bodyA.node?.removeFromParent()
             contact.bodyB.node?.removeFromParent()
-            score += 1
+            updateScore()
             updateDifficulty()
-            scoreLabel.text = "Score: \(score)"
         } else if contact.bodyA.categoryBitMask == ufoCategory && contact.bodyB.categoryBitMask == spaceshipCategory {
             contact.bodyA.node?.removeFromParent()
             handleSpaceshipCollision()
@@ -204,7 +201,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    private func updateDifficulty(){
+    private func updateScore() {
+        score += 1
+        scoreLabel.text = "Score: \(score)"
+
+    }
+
+    private func updateDifficulty() {
         if score > 20{
             ufoTimer?.invalidate()
             ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
@@ -242,25 +245,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 livesLeft += "❤️"
             }
         } else {
-            let name = UserDefaults.standard.string(forKey: "name") ?? ""
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let entity = NSEntityDescription.entity(forEntityName: "Scores", in: context)
-            let newScore = NSManagedObject(entity: entity!, insertInto: context)
-            newScore.setValue(name, forKey: "name")
-            newScore.setValue(score, forKey: "score")
             var coins = UserDefaults.standard.integer(forKey: "coins")
             coins += coinsCollected
             UserDefaults.standard.set(coins, forKey: "coins")
-            do {
-                try context.save()
-            } catch {
-                print("Failed saving")
-            }
 
             backgroundMusic.run(SKAction.stop())
             rocketTimer?.invalidate()
             ufoTimer?.invalidate()
+            coinTimer?.invalidate()
+            
             self.run(SKAction.playSoundFileNamed("crush.wav", waitForCompletion: false))
             explosion = SKEmitterNode(fileNamed: "Explosion")
             explosion.position = spaceship.position
