@@ -11,11 +11,13 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var top10Button: UIButton!
+    @IBOutlet weak var coinsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpButtons()
+        let coins = UserDefaults.standard.integer(forKey: "coins") 
+        coinsLabel.text = "\(coins)"
     }
 
     func setUpButtons() {

@@ -21,13 +21,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabel: SKLabelNode!
     var lives: Int = 3
     var livesLabel: SKLabelNode!
+    var coinsCollected: Int = 0
 
     var ufoTimer: Timer?
     var rocketTimer: Timer?
+    var coinTimer: Timer?
 
     let ufoCategory: UInt32 = 0x1 << 0
     let rocketCategory: UInt32 = 0x1 << 1
     let spaceshipCategory: UInt32 = 0x1 << 2
+    let coinCategory: UInt32 = 0x1 << 3
 
     var backgroundMusic: SKAudioNode!
     let motionManager = CMMotionManager()
@@ -52,7 +55,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship.physicsBody?.affectedByGravity = false
 
         spaceship.physicsBody?.categoryBitMask = spaceshipCategory
-        spaceship.physicsBody?.contactTestBitMask = ufoCategory
+        spaceship.physicsBody?.contactTestBitMask = ufoCategory | coinCategory
         spaceship.physicsBody?.collisionBitMask = 0
 
         self.addChild(spaceship)
@@ -65,6 +68,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         ufoTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer) in
             self.createUFO()
+        })
+
+        coinTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { (timer) in
+            self.createCoin()
         })
 
         if let musicURL = Bundle.main.url(forResource: "background", withExtension: "wav") {
@@ -106,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let minX = -size.width/2 + ufo.size.width
         let maxX = size.width/2 - ufo.size.width
         let range = maxX - minX
-        let randomUfoX = maxX - CGFloat(arc4random_uniform(UInt32(range)))
+        let randomUfoX = maxX - CGFloat.random(in: 0 ..< range)
 
         ufo.position = CGPoint(x: randomUfoX, y: size.height / 2 + ufo.size.height / 2)
 
@@ -114,6 +121,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let moveUFO = SKAction.sequence([flyDown, SKAction.removeFromParent()])
 
         ufo.run(moveUFO)
+    }
+
+    func createCoin() {
+        let coin = SKSpriteNode(imageNamed: "coin")
+        coin.size = CGSize(width: 70, height: 70)
+        coin.physicsBody = SKPhysicsBody(rectangleOf: coin.size)
+
+        coin.physicsBody?.affectedByGravity = false
+        coin.physicsBody?.isDynamic = true
+
+        coin.physicsBody?.categoryBitMask = coinCategory
+        coin.physicsBody?.contactTestBitMask = rocketCategory | spaceshipCategory
+        coin.physicsBody?.collisionBitMask = 0
+
+        coin.name = "coinNode"
+
+        self.addChild(coin)
+
+        let minX = -size.width/2 + coin.size.width
+        let maxX = size.width/2 - coin.size.width
+        let range = maxX - minX
+        let randomCoinX = maxX - CGFloat.random(in: 0 ..< range)
+
+        coin.position = CGPoint(x: randomCoinX, y: size.height / 2 + coin.size.height / 2)
+
+        let flyDown = SKAction.moveBy(x: 0, y: -size.height - coin.size.height, duration: 4)
+        let moveCoin = SKAction.sequence([flyDown, SKAction.removeFromParent()])
+
+        coin.run(moveCoin)
     }
 
     func shootRocket() {
@@ -208,6 +244,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if contact.bodyA.categoryBitMask == spaceshipCategory && contact.bodyB.categoryBitMask == ufoCategory {
             contact.bodyB.node?.removeFromParent()
             handleSpaceshipCollision()
+        } else if contact.bodyA.categoryBitMask == spaceshipCategory && contact.bodyB.categoryBitMask == coinCategory {
+            coinsCollected += 1
+            contact.bodyB.node?.removeFromParent()
+        } else if contact.bodyA.categoryBitMask == coinCategory && contact.bodyB.categoryBitMask == spaceshipCategory {
+            coinsCollected += 1
+            contact.bodyA.node?.removeFromParent()
         }
     }
 
@@ -227,6 +269,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let newScore = NSManagedObject(entity: entity!, insertInto: context)
             newScore.setValue(name, forKey: "name")
             newScore.setValue(score, forKey: "score")
+            var coins = UserDefaults.standard.integer(forKey: "coins")
+            coins += coinsCollected
+            UserDefaults.standard.set(coins, forKey: "coins")
             do {
                 try context.save()
             } catch {

@@ -147,18 +147,41 @@
                                     <constraint firstAttribute="width" constant="270" id="hbY-gS-3Gs"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="0CM-vw-PwF">
+                                <rect key="frame" x="328" y="40" width="65.333333333333314" height="36"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin" translatesAutoresizingMaskIntoConstraints="NO" id="4yQ-my-AXd">
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="1I2-yF-ZyI"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dk8-5P-1ME">
+                                        <rect key="frame" x="43" y="0.0" width="22.333333333333329" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="WIp-90-Wie"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.039459073604060868" green="0.039459073604060868" blue="0.039459073604060868" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="XaS-tw-jXh" firstAttribute="centerX" secondItem="UDE-Kd-nNF" secondAttribute="centerX" id="5Qw-2I-aY3"/>
                             <constraint firstItem="6f0-se-H3l" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="XaS-tw-jXh" secondAttribute="bottom" constant="35" id="MaI-ow-WCQ"/>
                             <constraint firstItem="zi0-p0-XEr" firstAttribute="centerX" secondItem="UDE-Kd-nNF" secondAttribute="centerX" id="Nk1-Tf-LhJ"/>
+                            <constraint firstItem="0CM-vw-PwF" firstAttribute="top" secondItem="6f0-se-H3l" secondAttribute="top" constant="20" id="aDe-vo-5Ul"/>
+                            <constraint firstItem="6f0-se-H3l" firstAttribute="trailing" secondItem="0CM-vw-PwF" secondAttribute="trailing" constant="20.666666666666686" id="jD1-bM-yZc"/>
                             <constraint firstItem="zi0-p0-XEr" firstAttribute="top" relation="lessThanOrEqual" secondItem="6f0-se-H3l" secondAttribute="top" constant="150" id="pKh-3w-hU4"/>
                             <constraint firstItem="XaS-tw-jXh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zi0-p0-XEr" secondAttribute="bottom" constant="75" id="pfj-Zk-8wT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6f0-se-H3l"/>
                     </view>
                     <connections>
+                        <outlet property="coinsLabel" destination="dk8-5P-1ME" id="xhU-Ob-nVp"/>
                         <outlet property="newGameButton" destination="6CN-5F-h9O" id="QT4-cM-YAr"/>
                         <outlet property="top10Button" destination="hHh-V6-98r" id="lqa-qn-5rJ"/>
                     </connections>
@@ -309,6 +332,7 @@
     </scenes>
     <resources>
         <image name="CosmoZone" width="2810" height="1392"/>
+        <image name="coin" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kA7-uz-IZN"/>
