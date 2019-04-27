@@ -209,31 +209,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     private func updateDifficulty() {
         if score > 20{
-            ufoTimer?.invalidate()
-            ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { (timer) in
-                self.createUFO()
-            })
+            updateUfoTimer(newTimeInterval: 0.5)
         } else if score > 35 {
-            ufoTimer?.invalidate()
-            ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: { (timer) in
-                self.createUFO()
-            })
+            updateUfoTimer(newTimeInterval: 0.25)
         } else if score > 45 {
-            ufoTimer?.invalidate()
-            ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true, block: { (timer) in
-                self.createUFO()
-            })
+            updateUfoTimer(newTimeInterval: 0.15)
         } else if score > 55 {
-            ufoTimer?.invalidate()
-            ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer) in
-                self.createUFO()
-            })
+            updateUfoTimer(newTimeInterval: 0.1)
         } else if score > 65 {
-            ufoTimer?.invalidate()
-            ufoTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true, block: { (timer) in
-                self.createUFO()
-            })
+            updateUfoTimer(newTimeInterval: 0.05)
         }
+    }
+
+    private func updateUfoTimer(newTimeInterval: Double) {
+        ufoTimer?.invalidate()
+        ufoTimer = Timer.scheduledTimer(withTimeInterval: newTimeInterval, repeats: true, block: { (timer) in
+            self.createUFO()
+        })
     }
 
     private func handleSpaceshipCollision() {
@@ -245,36 +237,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 livesLeft += "❤️"
             }
         } else {
-            var coins = UserDefaults.standard.integer(forKey: "coins")
-            coins += coinsCollected
-            UserDefaults.standard.set(coins, forKey: "coins")
-
             backgroundMusic.run(SKAction.stop())
-            rocketTimer?.invalidate()
-            ufoTimer?.invalidate()
-            coinTimer?.invalidate()
-            
-            self.run(SKAction.playSoundFileNamed("crush.wav", waitForCompletion: false))
-            explosion = SKEmitterNode(fileNamed: "Explosion")
-            explosion.position = spaceship.position
-            explosion.advanceSimulationTime(25)
-            explosion.zPosition = 5
-            explosion.particleBirthRate = 0
-
-            self.addChild(explosion)
-
-            _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: false) { (timer) in
-                self.spaceship.removeFromParent()
-            }
-            self.enumerateChildNodes(withName: "ufoNode", using: { node, stop in
-                node.run(SKAction.fadeOut(withDuration: 1))
-            })
+            saveCoins()
+            explodeSpaceship()
 
             _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+                self.isPaused = true
                 self.viewController.gameOver()
             }
         }
         livesLabel.text = livesLeft
+    }
+
+    private func saveCoins() {
+        var coins = UserDefaults.standard.integer(forKey: "coins")
+        coins += coinsCollected
+        UserDefaults.standard.set(coins, forKey: "coins")
+    }
+
+    private func explodeSpaceship() {
+        self.run(SKAction.playSoundFileNamed("crush.wav", waitForCompletion: false))
+        explosion = SKEmitterNode(fileNamed: "Explosion")
+        explosion.position = spaceship.position
+        explosion.advanceSimulationTime(25)
+        explosion.zPosition = 5
+        explosion.particleBirthRate = 0
+        self.addChild(explosion)
+        _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: false) { (timer) in
+            self.spaceship.removeFromParent()
+        }
     }
 
     @objc func handleLongPressure(sender: UILongPressGestureRecognizer) {
