@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="506" y="86"/>
+            <point key="canvasLocation" x="-207" y="85"/>
         </scene>
         <!--Game Over View Controller-->
         <scene sceneID="Hlb-x3-hZK">
@@ -94,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fi-ss-4VM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207" y="-664"/>
+            <point key="canvasLocation" x="-552" y="-673"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="eor-l2-50k">
@@ -125,7 +125,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="vC4-oB-n7x" kind="show" id="Fon-DK-QuT"/>
+                                            <action selector="startGame:" destination="tdH-Wk-B3I" eventType="touchUpInside" id="wgI-wh-vFC"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHh-V6-98r">
@@ -189,84 +189,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cow-IP-YFL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-907.24637681159425" y="85.59782608695653"/>
-        </scene>
-        <!--User View Controller-->
-        <scene sceneID="Hse-UU-eJx">
-            <objects>
-                <viewController storyboardIdentifier="User" id="vC4-oB-n7x" customClass="UserViewController" customModule="CosmoZone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="pNY-UT-BfC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type in your name 👽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSg-CZ-5gf">
-                                <rect key="frame" x="57" y="209" width="300" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="N99-qz-dev">
-                                <rect key="frame" x="57" y="301" width="300" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Xm-nH-4gX">
-                                <rect key="frame" x="57" y="377" width="300" height="70"/>
-                                <color key="backgroundColor" name="linkColor" catalog="System" colorSpace="catalog"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="CFV-Dr-evg"/>
-                                    <constraint firstAttribute="width" constant="300" id="Lrv-au-9GB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <state key="normal" title="Start Game">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="startGame:" destination="vC4-oB-n7x" eventType="touchUpInside" id="ysA-uE-E0I"/>
-                                </connections>
-                            </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name field is empty!" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qdz-GE-X7u">
-                                <rect key="frame" x="128.66666666666666" y="272" width="156.99999999999997" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Dn-PN-R6n">
-                                <rect key="frame" x="20" y="20" width="73" height="27"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="&lt; Back">
-                                    <color key="titleColor" red="0.157895597" green="0.76098508880000004" blue="0.050185540760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <segue destination="tdH-Wk-B3I" kind="show" id="kA7-uz-IZN"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.039459073599999998" green="0.039459073599999998" blue="0.039459073599999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="9Dn-PN-R6n" firstAttribute="leading" secondItem="qkp-do-ROj" secondAttribute="leading" constant="20" id="7g1-aQ-TNo"/>
-                            <constraint firstItem="cSg-CZ-5gf" firstAttribute="top" secondItem="qkp-do-ROj" secondAttribute="top" constant="189" id="G48-yN-Z0S"/>
-                            <constraint firstItem="N99-qz-dev" firstAttribute="top" secondItem="Qdz-GE-X7u" secondAttribute="bottom" constant="8" id="S8b-w6-xs1"/>
-                            <constraint firstItem="N99-qz-dev" firstAttribute="leading" secondItem="qkp-do-ROj" secondAttribute="leading" constant="57" id="awf-Sm-7nm"/>
-                            <constraint firstItem="N99-qz-dev" firstAttribute="top" secondItem="cSg-CZ-5gf" secondAttribute="bottom" constant="52" id="bd2-SN-NvF"/>
-                            <constraint firstItem="7Xm-nH-4gX" firstAttribute="top" secondItem="N99-qz-dev" secondAttribute="bottom" constant="46" id="bfz-hF-HA5"/>
-                            <constraint firstItem="Qdz-GE-X7u" firstAttribute="centerX" secondItem="pNY-UT-BfC" secondAttribute="centerX" id="dcy-hx-ct3"/>
-                            <constraint firstItem="qkp-do-ROj" firstAttribute="trailing" secondItem="N99-qz-dev" secondAttribute="trailing" constant="57" id="fDY-O0-T8O"/>
-                            <constraint firstItem="9Dn-PN-R6n" firstAttribute="top" secondItem="qkp-do-ROj" secondAttribute="top" id="jky-FH-zPB"/>
-                            <constraint firstItem="7Xm-nH-4gX" firstAttribute="centerX" secondItem="pNY-UT-BfC" secondAttribute="centerX" id="mYK-de-TRs"/>
-                            <constraint firstItem="cSg-CZ-5gf" firstAttribute="centerX" secondItem="pNY-UT-BfC" secondAttribute="centerX" id="yx8-fn-byZ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="qkp-do-ROj"/>
-                    </view>
-                    <connections>
-                        <outlet property="errorLabel" destination="Qdz-GE-X7u" id="TcT-0Q-sT1"/>
-                        <outlet property="startGameButton" destination="7Xm-nH-4gX" id="gEv-Ed-hut"/>
-                        <outlet property="userNameInput" destination="N99-qz-dev" id="Ypu-qI-PqF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MLJ-3z-uTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-207.24637681159422" y="85.59782608695653"/>
         </scene>
         <!--Top Users View Controller-->
         <scene sceneID="icP-40-1ae">
@@ -335,6 +257,6 @@
         <image name="coin" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kA7-uz-IZN"/>
+        <segue reference="Y9z-5H-uZa"/>
     </inferredMetricsTieBreakers>
 </document>

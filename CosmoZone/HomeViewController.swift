@@ -28,4 +28,8 @@ class HomeViewController: UIViewController {
         top10Button.layer.cornerRadius = 12
     }
 
+    @IBAction func startGame(_ sender: Any) {
+        let gameVC = self.storyboard?.instantiateViewController(withIdentifier: "GameVC") as! GameViewController
+        self.present(gameVC, animated: true, completion: nil)
+    }
 }

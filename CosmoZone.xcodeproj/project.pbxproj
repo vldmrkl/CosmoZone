@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D05301B2251BD5700C3AFF1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */; };
-		2D05301D2251C1DA00C3AFF1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05301C2251C1DA00C3AFF1 /* UserViewController.swift */; };
 		2D703DD8227473A1000D91F5 /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2D703DD7227473A1000D91F5 /* background.wav */; };
 		2D703DDC227473D9000D91F5 /* crush.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2D703DDB227473D9000D91F5 /* crush.wav */; };
 		2D703DDE22747883000D91F5 /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2D703DDD22747883000D91F5 /* shot.wav */; };
@@ -30,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		2D05301C2251C1DA00C3AFF1 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		2D703DD7227473A1000D91F5 /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
 		2D703DDB227473D9000D91F5 /* crush.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crush.wav; sourceTree = "<group>"; };
 		2D703DDD22747883000D91F5 /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */,
 				2D7E4573224DDE0900A08963 /* GameViewController.swift */,
 				2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */,
-				2D05301C2251C1DA00C3AFF1 /* UserViewController.swift */,
 				2DE7ACBD22558E5100A9AA97 /* TopUsersViewController.swift */,
 				2D7E4578224DDE0A00A08963 /* Assets.xcassets */,
 				2D703DD7227473A1000D91F5 /* background.wav */,
@@ -186,7 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D7E4572224DDE0900A08963 /* GameScene.swift in Sources */,
-				2D05301D2251C1DA00C3AFF1 /* UserViewController.swift in Sources */,
 				2DE7ACBC2255888F00A9AA97 /* CosmoZone.xcdatamodeld in Sources */,
 				2DE7ACBE22558E5100A9AA97 /* TopUsersViewController.swift in Sources */,
 				2DE7ACB722553CDA00A9AA97 /* GameOverViewController.swift in Sources */,
