@@ -21,6 +21,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lives: Int = 3
     var livesLabel: SKLabelNode!
     var coinsCollected: Int = 0
+    var rocketMagazine: Int = 10
+    var rocketsLabel: SKLabelNode!
 
     var ufoTimer: Timer?
     var rocketTimer: Timer?
@@ -60,6 +62,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship.physicsBody?.collisionBitMask = 0
 
         self.addChild(spaceship)
+
+        rocketsLabel = SKLabelNode(text: "Rockets: \(rocketMagazine)")
+        rocketsLabel.position = CGPoint(x:  -self.frame.size.width/2 + 200, y:  self.frame.size.height/2 - 300)
+        rocketsLabel.fontSize = 48
+        rocketsLabel.fontName = "Helvetica Neue"
+        self.addChild(rocketsLabel)
 
         scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
         scoreLabel.text = "Score: \(score)"
@@ -154,25 +162,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func shootRocket() {
-        self.run(SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false))
-        let rocket = SKSpriteNode(imageNamed: "rocket")
-        rocket.size = CGSize(width: 7, height: 40)
-        rocket.position = spaceship.position
-        rocket.zPosition = 0
+        if rocketMagazine > 0 {
+            self.run(SKAction.playSoundFileNamed("shot.wav", waitForCompletion: false))
+            let rocket = SKSpriteNode(imageNamed: "rocket")
+            rocket.size = CGSize(width: 7, height: 40)
+            rocket.position = spaceship.position
+            rocket.zPosition = 0
 
-        rocket.physicsBody = SKPhysicsBody(rectangleOf: rocket.size)
-        rocket.physicsBody?.affectedByGravity = false
-        rocket.physicsBody?.isDynamic = false
+            rocket.physicsBody = SKPhysicsBody(rectangleOf: rocket.size)
+            rocket.physicsBody?.affectedByGravity = false
+            rocket.physicsBody?.isDynamic = false
 
-        rocket.physicsBody?.categoryBitMask = rocketCategory
-        rocket.physicsBody?.contactTestBitMask = ufoCategory
+            rocket.physicsBody?.categoryBitMask = rocketCategory
+            rocket.physicsBody?.contactTestBitMask = ufoCategory
 
-        self.addChild(rocket)
+            self.addChild(rocket)
 
-        let flyUP = SKAction.move(to: CGPoint(x: spaceship.position.x, y: self.frame.size.height+50), duration: 1)
-        let moveRocket = SKAction.sequence([flyUP, SKAction.removeFromParent()])
+            let flyUP = SKAction.move(to: CGPoint(x: spaceship.position.x, y: self.frame.size.height+50), duration: 1)
+            let moveRocket = SKAction.sequence([flyUP, SKAction.removeFromParent()])
 
-        rocket.run(moveRocket)
+            rocket.run(moveRocket)
+
+            rocketMagazine -= 1
+            rocketsLabel.text = "Rockets: \(rocketMagazine)"
+        }
     }
 
     func didBegin(_ contact: SKPhysicsContact) {
