@@ -63,14 +63,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         self.addChild(spaceship)
 
-        rocketsLabel = SKLabelNode(text: "Rockets: \(rocketMagazine)")
-        rocketsLabel.position = CGPoint(x:  -self.frame.size.width/2 + 200, y:  self.frame.size.height/2 - 300)
+        scoreLabel = SKLabelNode(text: "Score: \(score)")
+        scoreLabel.position = CGPoint(x:  -self.frame.size.width/2 + 75, y:  self.frame.size.height/2 - 100)
+        scoreLabel.fontSize = 48
+        scoreLabel.fontName = "Helvetica Neue"
+        scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        self.addChild(scoreLabel)
+
+        rocketsLabel = SKLabelNode(text: "🚀 \(rocketMagazine)")
+        rocketsLabel.position = CGPoint(x:  -self.frame.size.width/2 + 75, y:  self.frame.size.height/2 - 200)
         rocketsLabel.fontSize = 48
         rocketsLabel.fontName = "Helvetica Neue"
+        rocketsLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         self.addChild(rocketsLabel)
-
-        scoreLabel = childNode(withName: "scoreLabel") as? SKLabelNode
-        scoreLabel.text = "Score: \(score)"
 
         livesLabel = childNode(withName: "livesLabel") as? SKLabelNode
         livesLabel.text = "❤️❤️❤️"
@@ -184,7 +189,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rocket.run(moveRocket)
 
             rocketMagazine -= 1
-            rocketsLabel.text = "Rockets: \(rocketMagazine)"
+            rocketsLabel.text = "🚀 \(rocketMagazine)"
         }
     }
 
@@ -251,6 +256,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         } else {
             backgroundMusic.run(SKAction.stop())
+            self.backgroundMusic.removeFromParent()
             saveCoins()
             explodeSpaceship()
 
