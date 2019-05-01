@@ -138,9 +138,6 @@
                                         <state key="normal" title="Store">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="57q-GJ-zgD" kind="show" id="7PJ-V4-ni8"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -190,73 +187,9 @@
             </objects>
             <point key="canvasLocation" x="-907.24637681159425" y="85.59782608695653"/>
         </scene>
-        <!--Top Users View Controller-->
-        <scene sceneID="icP-40-1ae">
-            <objects>
-                <viewController id="57q-GJ-zgD" customClass="TopUsersViewController" customModule="CosmoZone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="b4c-hL-7Q6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tth-U1-3Ap">
-                                <rect key="frame" x="114" y="33" width="186" height="39"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="33"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvr-JD-Tdk">
-                                <rect key="frame" x="20" y="39" width="73" height="27"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="&lt; Back">
-                                    <color key="titleColor" red="0.157895597" green="0.76098508880000004" blue="0.050185540760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <segue destination="tdH-Wk-B3I" kind="show" id="bhM-Tw-1XB"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="53v-VJ-FVd">
-                                <rect key="frame" x="51" y="114" width="313" height="508"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="scoreTableCell" id="9jD-aq-6rM">
-                                        <rect key="frame" x="0.0" y="28" width="313" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9jD-aq-6rM" id="0kE-Y8-t9q">
-                                            <rect key="frame" x="0.0" y="0.0" width="313" height="43.666666666666664"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.039459073599999998" green="0.039459073599999998" blue="0.039459073599999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="tth-U1-3Ap" firstAttribute="top" secondItem="Q6Q-6N-98F" secondAttribute="top" constant="13" id="GSV-39-bzU"/>
-                            <constraint firstItem="tth-U1-3Ap" firstAttribute="centerX" secondItem="b4c-hL-7Q6" secondAttribute="centerX" id="RHY-88-FyH"/>
-                            <constraint firstItem="Zvr-JD-Tdk" firstAttribute="leading" secondItem="Q6Q-6N-98F" secondAttribute="leading" constant="20" id="eVO-7z-5BK"/>
-                            <constraint firstItem="Zvr-JD-Tdk" firstAttribute="top" secondItem="Q6Q-6N-98F" secondAttribute="top" constant="19" id="ydF-cF-VY4"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="Q6Q-6N-98F"/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="53v-VJ-FVd" id="Aae-VZ-rQg"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NX3-I2-JFm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-907.24637681159425" y="809.51086956521749"/>
-        </scene>
     </scenes>
     <resources>
         <image name="CosmoZone" width="2810" height="1392"/>
         <image name="coin" width="256" height="256"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Y9z-5H-uZa"/>
-    </inferredMetricsTieBreakers>
 </document>
