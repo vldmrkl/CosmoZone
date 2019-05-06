@@ -23,6 +23,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var coinsCollected: Int = 0
     var rocketMagazine: Int = 10
     var rocketsLabel: SKLabelNode!
+    var bottomBorder: SKSpriteNode!
+    var ufosMissed: Int = 0
 
     var ufoTimer: Timer?
     var rocketTimer: Timer?
@@ -34,6 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let spaceshipCategory: UInt32 = 0x1 << 2
     let coinCategory: UInt32 = 0x1 << 3
     let rocketBoxCategory: UInt32 = 0x1 << 4
+    let bottomBorderCategory: UInt32 = 0x1 << 5
 
     var backgroundMusic: SKAudioNode!
     let motionManager = CMMotionManager()
@@ -54,16 +57,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceship.position = CGPoint(x: 0, y: -self.frame.size.height/2 + 200)
         spaceship.zPosition = 1
         spaceship.size = CGSize(width: 150, height: 250)
-
-
         spaceship.physicsBody = SKPhysicsBody(rectangleOf: spaceship.size)
         spaceship.physicsBody?.affectedByGravity = false
-
         spaceship.physicsBody?.categoryBitMask = spaceshipCategory
         spaceship.physicsBody?.contactTestBitMask = ufoCategory | coinCategory | rocketBoxCategory
         spaceship.physicsBody?.collisionBitMask = 0
-
         self.addChild(spaceship)
+
+        bottomBorder = childNode(withName: "bottomBorder") as? SKSpriteNode
+        bottomBorder.physicsBody?.categoryBitMask = bottomBorderCategory
+        bottomBorder.physicsBody?.contactTestBitMask = ufoCategory
+        bottomBorder.physicsBody?.collisionBitMask = bottomBorderCategory
 
         scoreLabel = SKLabelNode(text: "Score: \(score)")
         scoreLabel.position = CGPoint(x:  -self.frame.size.width/2 + 75, y:  self.frame.size.height/2 - 100)
@@ -88,6 +92,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         coinTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { (timer) in
             self.createCoin()
+        })
+
+        rocketBoxTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { (timer) in
+            self.createRocketBox()
         })
 
         if let musicURL = Bundle.main.url(forResource: "background", withExtension: "wav") {
@@ -119,7 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ufo.physicsBody?.isDynamic = true
 
         ufo.physicsBody?.categoryBitMask = ufoCategory
-        ufo.physicsBody?.contactTestBitMask = rocketCategory | spaceshipCategory
+        ufo.physicsBody?.contactTestBitMask = rocketCategory | spaceshipCategory | bottomBorderCategory
         ufo.physicsBody?.collisionBitMask = 0
 
         ufo.name = "ufoNode"
@@ -169,7 +177,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func createRocketBox() {
-        let rocketBox = SKSpriteNode(imageNamed: "bronze-box")
+        print(ufosMissed)
+        let rocketBox: SKSpriteNode!
+        switch ufosMissed {
+        case 0..<3:
+            rocketBox = SKSpriteNode(imageNamed: "gold-box")
+            rocketBox.name = "goldBox"
+            break
+        case 3..<6:
+            rocketBox = SKSpriteNode(imageNamed: "silver-box")
+            rocketBox.name = "silverBox"
+            break
+        case 6..<100:
+            rocketBox = SKSpriteNode(imageNamed: "bronze-box")
+            rocketBox.name = "bronzeBox"
+            break
+        default:
+            rocketBox = SKSpriteNode(imageNamed: "bronze-box")
+        }
+
         rocketBox.size = CGSize(width: 70, height: 70)
         rocketBox.physicsBody = SKPhysicsBody(rectangleOf: rocketBox.size)
 
@@ -179,8 +205,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         rocketBox.physicsBody?.categoryBitMask = rocketBoxCategory
         rocketBox.physicsBody?.contactTestBitMask = rocketCategory | spaceshipCategory
         rocketBox.physicsBody?.collisionBitMask = 0
-
-        rocketBox.name = "rocketBoxNode"
 
         self.addChild(rocketBox)
 
@@ -218,7 +242,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let moveRocket = SKAction.sequence([flyUP, SKAction.removeFromParent()])
 
             rocket.run(moveRocket)
-
+            
             rocketMagazine -= 1
             rocketsLabel.text = "🚀 \(rocketMagazine)"
         }
@@ -248,24 +272,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             coinsCollected += 1
             contact.bodyA.node?.removeFromParent()
         } else if contact.bodyA.categoryBitMask == rocketBoxCategory && contact.bodyB.categoryBitMask == spaceshipCategory {
-            rocketMagazine += 5
-            rocketsLabel.text = "🚀 \(rocketMagazine)"
+            updateRocketMagazine(nodeName: (contact.bodyA.node?.name)!)
             contact.bodyA.node?.removeFromParent()
         } else if contact.bodyA.categoryBitMask == spaceshipCategory && contact.bodyB.categoryBitMask == rocketBoxCategory {
-            rocketMagazine += 5
-            rocketsLabel.text = "🚀 \(rocketMagazine)"
+            updateRocketMagazine(nodeName: (contact.bodyB.node?.name)!)
             contact.bodyB.node?.removeFromParent()
+        } else if contact.bodyA.categoryBitMask == bottomBorderCategory && contact.bodyB.categoryBitMask == ufoCategory {
+            ufosMissed += 1
+        } else if contact.bodyA.categoryBitMask == ufoCategory && contact.bodyB.categoryBitMask == bottomBorderCategory {
+            ufosMissed += 1
         }
+    }
 
+    private func updateRocketMagazine(nodeName box: String) {
+        switch box {
+        case "bronzeBox":
+            rocketMagazine += 5
+        case "silverBox":
+            rocketMagazine += 10
+        case "goldBox":
+            rocketMagazine += 20
+        default:
+            rocketMagazine += 5
+        }
+        rocketsLabel.text = "🚀 \(rocketMagazine)"
+        ufosMissed = 0
     }
 
     private func updateScore() {
         score += 1
-        if score%5 == 0 {
-            rocketBoxTimer = Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (timer) in
-                self.createRocketBox()
-            })
-        }
         scoreLabel.text = "Score: \(score)"
     }
 
