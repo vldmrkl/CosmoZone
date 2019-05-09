@@ -177,7 +177,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
     func createRocketBox() {
-        print(ufosMissed)
         let rocketBox: SKSpriteNode!
         switch ufosMissed {
         case 0..<3:
