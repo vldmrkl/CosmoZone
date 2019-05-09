@@ -337,7 +337,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.backgroundMusic.removeFromParent()
             saveCoins()
             explodeSpaceship()
-
+            rocketBoxTimer?.invalidate()
+            coinTimer()
+            ufoTimer?.invalidate()
             _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
                 self.isPaused = true
                 self.viewController.gameOver()
