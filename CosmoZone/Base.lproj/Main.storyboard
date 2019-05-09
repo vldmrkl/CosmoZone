@@ -25,76 +25,26 @@
             </objects>
             <point key="canvasLocation" x="-207" y="85"/>
         </scene>
-        <!--Game Over View Controller-->
-        <scene sceneID="Hlb-x3-hZK">
+        <!--View Controller-->
+        <scene sceneID="8c1-Ki-hBF">
             <objects>
-                <viewController storyboardIdentifier="GameOver" id="Vbk-jz-b7b" customClass="GameOverViewController" customModule="CosmoZone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lj2-7r-NdV">
+                <viewController id="hTm-5F-yZJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jaj-Lt-6Eh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dz-DD-Mlg">
-                                <rect key="frame" x="60.333333333333343" y="215" width="293.66666666666663" height="64.666666666666686"/>
-                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="56"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="Wtc-bv-ke5">
-                                <rect key="frame" x="57" y="409" width="300" height="174"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAx-C7-s7l">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="70"/>
-                                        <color key="backgroundColor" red="0.157895597" green="0.76098508880000004" blue="0.050185540760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="aMV-WL-Q7W"/>
-                                            <constraint firstAttribute="height" constant="70" id="xoY-os-Seh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Play Again">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="BV1-FR-VrT" kind="show" id="lYn-Uq-FDD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syl-YY-MVa">
-                                        <rect key="frame" x="0.0" y="104" width="300" height="70"/>
-                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="58S-69-rn1"/>
-                                            <constraint firstAttribute="height" constant="70" id="fJg-Rh-4sl"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Go to Main Menu">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="tdH-Wk-B3I" kind="show" id="Y9z-5H-uZa"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="43D-Or-3Hq"/>
-                                </constraints>
-                            </stackView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-Sj-V9W">
+                                <rect key="frame" x="0.0" y="116" width="414" height="523"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.039459073599999998" green="0.039459073599999998" blue="0.039459073599999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="4Dz-DD-Mlg" firstAttribute="centerX" secondItem="lj2-7r-NdV" secondAttribute="centerX" id="7Lv-QU-ybc"/>
-                            <constraint firstItem="Wtc-bv-ke5" firstAttribute="centerX" secondItem="lj2-7r-NdV" secondAttribute="centerX" id="O6d-Wy-azP"/>
-                            <constraint firstItem="4Dz-DD-Mlg" firstAttribute="top" secondItem="kGw-qt-413" secondAttribute="top" constant="195" id="Xct-br-pHV"/>
-                            <constraint firstItem="kGw-qt-413" firstAttribute="bottom" secondItem="Wtc-bv-ke5" secondAttribute="bottom" constant="153" id="fQT-2g-ahh"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="kGw-qt-413"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ueU-za-ICv"/>
                     </view>
-                    <connections>
-                        <outlet property="mainMenuButton" destination="Syl-YY-MVa" id="T8u-aG-aJZ"/>
-                        <outlet property="playAgainButton" destination="AAx-C7-s7l" id="rlD-Tc-wmQ"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7fi-ss-4VM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uBh-1U-Dtk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-552" y="-673"/>
+            <point key="canvasLocation" x="503" y="86"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="eor-l2-50k">

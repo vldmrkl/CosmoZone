@@ -35,8 +35,8 @@ class GameViewController: UIViewController {
     }
 
     func gameOver() {
-        let gameOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameOver") as! GameOverViewController
-        self.present(gameOverVC, animated: true, completion: nil)
+        let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Home") as! HomeViewController
+        self.present(homeVC, animated: true, completion: nil)
     }
 
     override var shouldAutorotate: Bool {

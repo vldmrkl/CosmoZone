@@ -20,7 +20,6 @@
 		2D7E4579224DDE0A00A08963 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D7E4578224DDE0A00A08963 /* Assets.xcassets */; };
 		2D7E457C224DDE0B00A08963 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D7E457A224DDE0B00A08963 /* LaunchScreen.storyboard */; };
 		2DE7ACB322552D9F00A9AA97 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB222552D9F00A9AA97 /* Explosion.sks */; };
-		2DE7ACB722553CDA00A9AA97 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */; };
 		2DE7ACB922557B6F00A9AA97 /* collision.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2DE7ACB822557B6F00A9AA97 /* collision.wav */; };
 		2DE7ACBC2255888F00A9AA97 /* CosmoZone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7ACBA2255888F00A9AA97 /* CosmoZone.xcdatamodeld */; };
 		2DE7ACBE22558E5100A9AA97 /* TopUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE7ACBD22558E5100A9AA97 /* TopUsersViewController.swift */; };
@@ -43,7 +42,6 @@
 		2D7E457B224DDE0B00A08963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D7E457D224DDE0B00A08963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DE7ACB222552D9F00A9AA97 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
-		2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		2DE7ACB822557B6F00A9AA97 /* collision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collision.wav; sourceTree = "<group>"; };
 		2DE7ACBB2255888F00A9AA97 /* CosmoZone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CosmoZone.xcdatamodel; sourceTree = "<group>"; };
 		2DE7ACBD22558E5100A9AA97 /* TopUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUsersViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 				2D7E4575224DDE0900A08963 /* Main.storyboard */,
 				2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */,
 				2D7E4573224DDE0900A08963 /* GameViewController.swift */,
-				2DE7ACB622553CDA00A9AA97 /* GameOverViewController.swift */,
 				2DE7ACBD22558E5100A9AA97 /* TopUsersViewController.swift */,
 				2D7E4578224DDE0A00A08963 /* Assets.xcassets */,
 				2D703DD7227473A1000D91F5 /* background.wav */,
@@ -185,7 +182,6 @@
 				2D7E4572224DDE0900A08963 /* GameScene.swift in Sources */,
 				2DE7ACBC2255888F00A9AA97 /* CosmoZone.xcdatamodeld in Sources */,
 				2DE7ACBE22558E5100A9AA97 /* TopUsersViewController.swift in Sources */,
-				2DE7ACB722553CDA00A9AA97 /* GameOverViewController.swift in Sources */,
 				2D7E4574224DDE0900A08963 /* GameViewController.swift in Sources */,
 				2D7E456C224DDE0900A08963 /* AppDelegate.swift in Sources */,
 				2D05301B2251BD5700C3AFF1 /* HomeViewController.swift in Sources */,
