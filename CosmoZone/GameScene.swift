@@ -338,7 +338,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             saveCoins()
             explodeSpaceship()
             rocketBoxTimer?.invalidate()
-            coinTimer()
+            coinTimer?.invalidate()
             ufoTimer?.invalidate()
             _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
                 self.isPaused = true
