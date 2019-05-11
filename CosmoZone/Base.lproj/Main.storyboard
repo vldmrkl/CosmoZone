@@ -25,26 +25,40 @@
             </objects>
             <point key="canvasLocation" x="-207" y="85"/>
         </scene>
-        <!--View Controller-->
+        <!--Store View Controller-->
         <scene sceneID="8c1-Ki-hBF">
             <objects>
-                <viewController id="hTm-5F-yZJ" sceneMemberID="viewController">
+                <viewController id="hTm-5F-yZJ" customClass="StoreViewController" customModule="CosmoZone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jaj-Lt-6Eh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-Sj-V9W">
-                                <rect key="frame" x="0.0" y="116" width="414" height="523"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-Sj-V9W">
+                                <rect key="frame" x="0.0" y="70" width="414" height="616"/>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ion-P7-3Xb">
+                                <rect key="frame" x="187.66666666666666" y="694" width="39" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="cxp-Sj-V9W" firstAttribute="leading" secondItem="ueU-za-ICv" secondAttribute="leading" id="CAX-nF-eFY"/>
+                            <constraint firstItem="ueU-za-ICv" firstAttribute="bottom" secondItem="cxp-Sj-V9W" secondAttribute="bottom" constant="50" id="F5g-JR-Eka"/>
+                            <constraint firstItem="cxp-Sj-V9W" firstAttribute="trailing" secondItem="ueU-za-ICv" secondAttribute="trailing" id="KyE-S2-QFa"/>
+                            <constraint firstItem="ueU-za-ICv" firstAttribute="bottom" secondItem="Ion-P7-3Xb" secondAttribute="bottom" constant="5" id="jTu-FA-umQ"/>
+                            <constraint firstItem="Ion-P7-3Xb" firstAttribute="centerX" secondItem="jaj-Lt-6Eh" secondAttribute="centerX" id="uqn-cA-kty"/>
+                            <constraint firstItem="cxp-Sj-V9W" firstAttribute="top" secondItem="ueU-za-ICv" secondAttribute="top" constant="50" id="zu6-H1-hkJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ueU-za-ICv"/>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="Ion-P7-3Xb" id="gjI-My-1WF"/>
+                        <outlet property="scrollView" destination="cxp-Sj-V9W" id="tt4-ap-zGm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uBh-1U-Dtk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="503" y="86"/>
+            <point key="canvasLocation" x="502.89855072463774" y="85.59782608695653"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="eor-l2-50k">
@@ -88,6 +102,9 @@
                                         <state key="normal" title="Store">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="hTm-5F-yZJ" kind="show" id="CTm-m1-H0i"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

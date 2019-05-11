@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2D05301B2251BD5700C3AFF1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */; };
+		2D131DC122866C4E0053DEC3 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D131DC022866C4E0053DEC3 /* StoreViewController.swift */; };
+		2D131DC322866CA20053DEC3 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D131DC222866CA20053DEC3 /* StoreItem.swift */; };
+		2D131DC522866CCA0053DEC3 /* StoreItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D131DC422866CCA0053DEC3 /* StoreItem.xib */; };
 		2D703DD8227473A1000D91F5 /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2D703DD7227473A1000D91F5 /* background.wav */; };
 		2D703DDC227473D9000D91F5 /* crush.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2D703DDB227473D9000D91F5 /* crush.wav */; };
 		2D703DDE22747883000D91F5 /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2D703DDD22747883000D91F5 /* shot.wav */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2D131DC022866C4E0053DEC3 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		2D131DC222866CA20053DEC3 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
+		2D131DC422866CCA0053DEC3 /* StoreItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreItem.xib; sourceTree = "<group>"; };
 		2D703DD7227473A1000D91F5 /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = background.wav; sourceTree = "<group>"; };
 		2D703DDB227473D9000D91F5 /* crush.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = crush.wav; sourceTree = "<group>"; };
 		2D703DDD22747883000D91F5 /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
@@ -85,6 +91,9 @@
 				2DE7ACB222552D9F00A9AA97 /* Explosion.sks */,
 				2DF7490322503A1000F691BE /* Starfall.sks */,
 				2D7E4575224DDE0900A08963 /* Main.storyboard */,
+				2D131DC022866C4E0053DEC3 /* StoreViewController.swift */,
+				2D131DC222866CA20053DEC3 /* StoreItem.swift */,
+				2D131DC422866CCA0053DEC3 /* StoreItem.xib */,
 				2D05301A2251BD5700C3AFF1 /* HomeViewController.swift */,
 				2D7E4573224DDE0900A08963 /* GameViewController.swift */,
 				2DE7ACBD22558E5100A9AA97 /* TopUsersViewController.swift */,
@@ -168,6 +177,7 @@
 				2D703DD8227473A1000D91F5 /* background.wav in Resources */,
 				2D703DDC227473D9000D91F5 /* crush.wav in Resources */,
 				2D703DDE22747883000D91F5 /* shot.wav in Resources */,
+				2D131DC522866CCA0053DEC3 /* StoreItem.xib in Resources */,
 				2DE7ACB922557B6F00A9AA97 /* collision.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +195,8 @@
 				2D7E4574224DDE0900A08963 /* GameViewController.swift in Sources */,
 				2D7E456C224DDE0900A08963 /* AppDelegate.swift in Sources */,
 				2D05301B2251BD5700C3AFF1 /* HomeViewController.swift in Sources */,
+				2D131DC322866CA20053DEC3 /* StoreItem.swift in Sources */,
+				2D131DC122866C4E0053DEC3 /* StoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
