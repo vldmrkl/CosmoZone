@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="StoreItem" customModule="CosmoZone" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1rF-Jb-nWU">
+                    <rect key="frame" x="70" y="253" width="274" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="TZx-Kz-7nV"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVJ-dd-fcb">
+                    <rect key="frame" x="168.66666666666666" y="526" width="76.666666666666657" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8u-7m-bpm">
+                    <rect key="frame" x="177.33333333333334" y="589" width="59.333333333333343" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17X-QT-xx2">
+                    <rect key="frame" x="157" y="645" width="100" height="36"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="EGY-no-VUg"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Buy">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="mVJ-dd-fcb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="E85-Rn-AQ5"/>
+                <constraint firstItem="1rF-Jb-nWU" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Jdt-Fe-4h3"/>
+                <constraint firstItem="1rF-Jb-nWU" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="ZQx-3Z-kkk"/>
+                <constraint firstItem="R8u-7m-bpm" firstAttribute="top" secondItem="mVJ-dd-fcb" secondAttribute="bottom" constant="27" id="agn-9M-iEs"/>
+                <constraint firstItem="mVJ-dd-fcb" firstAttribute="top" secondItem="1rF-Jb-nWU" secondAttribute="bottom" constant="23" id="c9U-iH-GQm"/>
+                <constraint firstItem="R8u-7m-bpm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="eda-4s-gvq"/>
+                <constraint firstItem="17X-QT-xx2" firstAttribute="top" secondItem="R8u-7m-bpm" secondAttribute="bottom" constant="32" id="fg5-VF-Hac"/>
+                <constraint firstItem="17X-QT-xx2" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="woq-ge-Gy7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imageView" destination="1rF-Jb-nWU" id="0Lf-5u-JqC"/>
+                <outlet property="nameLabel" destination="mVJ-dd-fcb" id="Ako-z1-CbE"/>
+                <outlet property="priceLabel" destination="R8u-7m-bpm" id="l1f-7k-ROM"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="142.66304347826087"/>
+        </view>
+    </objects>
+</document>
