@@ -11,15 +11,28 @@ import UIKit
 class StoreViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
-    var storeItems:[StoreItem] = [];
+
+    struct Item {
+        var imageName: String
+        var name: String
+        var price: Int
+    }
+
+    var storeItems:[StoreItem] = []
+    let spaceships: [Item] = [
+        Item(imageName: "spaceship", name: "Super Jet 500", price: 300),
+        Item(imageName: "spaceship", name: "SuperJet Ultra", price: 500),
+        Item(imageName: "spaceship", name: "Jet Camry", price: 700),
+        Item(imageName: "spaceship", name: "SuperPrado", price: 1000),
+        Item(imageName: "spaceship", name: "Super Jet Urus", price: 5000)
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         scrollView.delegate = self
 
-        storeItems = createStoreItems()
+        createStoreItems()
         setupStoreScrollView(storeItems: storeItems)
 
         pageControl.numberOfPages = storeItems.count
@@ -27,33 +40,14 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubviewToFront(pageControl)
     }
 
-    func createStoreItems() -> [StoreItem] {
-        let storeItem1:StoreItem = Bundle.main.loadNibNamed("StoreItem", owner: self, options: nil)?.first as! StoreItem
-        storeItem1.imageView.image = UIImage(named: "spaceship")
-        storeItem1.nameLabel.text = "Super Jet 5000"
-        storeItem1.priceLabel.text = "$300"
-
-        let storeItem2:StoreItem = Bundle.main.loadNibNamed("StoreItem", owner: self, options: nil)?.first as! StoreItem
-        storeItem2.imageView.image = UIImage(named: "spaceship")
-        storeItem2.nameLabel.text = "Spaceship Ultra"
-        storeItem2.priceLabel.text = "$500"
-
-        let storeItem3:StoreItem = Bundle.main.loadNibNamed("StoreItem", owner: self, options: nil)?.first as! StoreItem
-        storeItem3.imageView.image = UIImage(named: "spaceship")
-        storeItem3.nameLabel.text = "Spaceship Jetta 9000"
-        storeItem3.priceLabel.text = "$1000"
-
-        let storeItem4:StoreItem = Bundle.main.loadNibNamed("StoreItem", owner: self, options: nil)?.first as! StoreItem
-        storeItem4.imageView.image = UIImage(named: "spaceship")
-        storeItem4.nameLabel.text = "Spaceship Camry"
-        storeItem4.priceLabel.text = "$1500"
-
-        let storeItem5:StoreItem = Bundle.main.loadNibNamed("StoreItem", owner: self, options: nil)?.first as! StoreItem
-        storeItem5.imageView.image = UIImage(named: "spaceship")
-        storeItem5.nameLabel.text = "Spaceship Urus"
-        storeItem5.priceLabel.text = "$5000"
-
-        return [storeItem1, storeItem2, storeItem3, storeItem4, storeItem5]
+    func createStoreItems(){
+        for ship in spaceships {
+            let item: StoreItem = Bundle.main.loadNibNamed("StoreItem", owner: self, options: nil)?.first as! StoreItem
+            item.imageView.image = UIImage(named: ship.imageName)
+            item.nameLabel.text = ship.name
+            item.priceLabel.text = "$\(ship.price)"
+            storeItems.append(item)
+        }
     }
 
     func setupStoreScrollView(storeItems : [StoreItem]) {
@@ -83,21 +77,17 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         let percentOffset: CGPoint = CGPoint(x: percentageHorizontalOffset, y: percentageVerticalOffset)
 
         if(percentOffset.x > 0 && percentOffset.x <= 0.25) {
-
-            storeItems[0].imageView.transform = CGAffineTransform(scaleX: (0.25-percentOffset.x)/0.25, y: (0.25-percentOffset.x)/0.25)
-            storeItems[1].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.25, y: percentOffset.x/0.25)
-
+            storeItems[0].storeItemStackView.transform = CGAffineTransform(scaleX: (0.25-percentOffset.x)/0.25, y: (0.25-percentOffset.x)/0.25)
+            storeItems[1].storeItemStackView.transform = CGAffineTransform(scaleX: percentOffset.x/0.25, y: percentOffset.x/0.25)
         } else if(percentOffset.x > 0.25 && percentOffset.x <= 0.50) {
-            storeItems[1].imageView.transform = CGAffineTransform(scaleX: (0.50-percentOffset.x)/0.25, y: (0.50-percentOffset.x)/0.25)
-            storeItems[2].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.50, y: percentOffset.x/0.50)
-
+            storeItems[1].storeItemStackView.transform = CGAffineTransform(scaleX: (0.50-percentOffset.x)/0.25, y: (0.50-percentOffset.x)/0.25)
+            storeItems[2].storeItemStackView.transform = CGAffineTransform(scaleX: percentOffset.x/0.50, y: percentOffset.x/0.50)
         } else if(percentOffset.x > 0.50 && percentOffset.x <= 0.75) {
-            storeItems[2].imageView.transform = CGAffineTransform(scaleX: (0.75-percentOffset.x)/0.25, y: (0.75-percentOffset.x)/0.25)
-            storeItems[3].imageView.transform = CGAffineTransform(scaleX: percentOffset.x/0.75, y: percentOffset.x/0.75)
-
+            storeItems[2].storeItemStackView.transform = CGAffineTransform(scaleX: (0.75-percentOffset.x)/0.25, y: (0.75-percentOffset.x)/0.25)
+            storeItems[3].storeItemStackView.transform = CGAffineTransform(scaleX: percentOffset.x/0.75, y: percentOffset.x/0.75)
         } else if(percentOffset.x > 0.75 && percentOffset.x <= 1) {
-            storeItems[3].imageView.transform = CGAffineTransform(scaleX: (1-percentOffset.x)/0.25, y: (1-percentOffset.x)/0.25)
-            storeItems[4].imageView.transform = CGAffineTransform(scaleX: percentOffset.x, y: percentOffset.x)
+            storeItems[3].storeItemStackView.transform = CGAffineTransform(scaleX: (1-percentOffset.x)/0.25, y: (1-percentOffset.x)/0.25)
+            storeItems[4].storeItemStackView.transform = CGAffineTransform(scaleX: percentOffset.x, y: percentOffset.x)
         }
     }
 }
