@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-Sj-V9W">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxp-Sj-V9W">
                                 <rect key="frame" x="0.0" y="70" width="414" height="616"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ion-P7-3Xb">
@@ -46,7 +46,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tdH-Wk-B3I" kind="show" animates="NO" id="pr0-LG-9a2"/>
+                                    <segue destination="tdH-Wk-B3I" kind="presentation" modalTransitionStyle="crossDissolve" id="pr0-LG-9a2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,12 +92,12 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6CN-5F-h9O">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="70"/>
-                                        <color key="backgroundColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" red="0.98431372549019602" green="0.32549019607843138" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="lUv-7L-LFM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                        <state key="normal" title="Play">
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="23"/>
+                                        <state key="normal" title="PLAY">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -106,16 +106,16 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHh-V6-98r">
                                         <rect key="frame" x="0.0" y="94" width="270" height="70"/>
-                                        <color key="backgroundColor" name="linkColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" red="0.99215686274509807" green="0.32549019607843138" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="Isp-Ge-UZM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                        <state key="normal" title="Store">
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="26"/>
+                                        <state key="normal" title="STORE">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="hTm-5F-yZJ" kind="show" animates="NO" id="CTm-m1-H0i"/>
+                                            <segue destination="hTm-5F-yZJ" kind="presentation" modalTransitionStyle="crossDissolve" id="CTm-m1-H0i"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -159,7 +159,7 @@
                     <connections>
                         <outlet property="coinsLabel" destination="dk8-5P-1ME" id="xhU-Ob-nVp"/>
                         <outlet property="newGameButton" destination="6CN-5F-h9O" id="QT4-cM-YAr"/>
-                        <outlet property="top10Button" destination="hHh-V6-98r" id="lqa-qn-5rJ"/>
+                        <outlet property="storeButton" destination="hHh-V6-98r" id="tsl-Az-jal"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cow-IP-YFL" userLabel="First Responder" sceneMemberID="firstResponder"/>

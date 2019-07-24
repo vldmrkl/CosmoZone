@@ -12,6 +12,6 @@ class StoreItem: UIView {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var storeItemStackView: UIStackView!
-    
 }

@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="oF6-aO-NuG">
-                    <rect key="frame" x="123.66666666666669" y="278" width="167" height="377"/>
+                    <rect key="frame" x="123.66666666666669" y="270" width="167" height="385"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1rF-Jb-nWU">
                             <rect key="frame" x="0.0" y="0.0" width="167" height="200"/>
@@ -38,13 +38,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="17X-QT-xx2">
-                            <rect key="frame" x="33.333333333333329" y="341" width="99.999999999999986" height="36"/>
+                            <rect key="frame" x="33.333333333333329" y="341" width="99.999999999999986" height="44"/>
                             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="100" id="EGY-no-VUg"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                            <state key="normal" title="Buy">
+                            <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="24"/>
+                            <state key="normal" title="BUY">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
@@ -58,6 +58,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="buyButton" destination="17X-QT-xx2" id="swW-Kf-0F4"/>
                 <outlet property="imageView" destination="1rF-Jb-nWU" id="0Lf-5u-JqC"/>
                 <outlet property="nameLabel" destination="mVJ-dd-fcb" id="Ako-z1-CbE"/>
                 <outlet property="priceLabel" destination="R8u-7m-bpm" id="l1f-7k-ROM"/>

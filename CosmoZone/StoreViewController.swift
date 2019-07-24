@@ -31,7 +31,11 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
 
         scrollView.delegate = self
+        let color1 = UIColor(red: 124.0/255.0, green:77.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        let color2 = UIColor(red: 63.0/255.0, green: 29.0/255.0, blue: 203.0/255.0, alpha: 1.0)
 
+
+        view.setGradientBackground(colorOne: color1, colorTwo: color2)
         createStoreItems()
         setupStoreScrollView(storeItems: storeItems)
 
@@ -41,11 +45,19 @@ class StoreViewController: UIViewController, UIScrollViewDelegate {
     }
 
     func createStoreItems(){
+        let pink = UIColor(red: 250.0/255.0, green: 112.0/255.0, blue: 154.0/255.0, alpha: 1.0)
+        let yellow = UIColor(red: 254.0/255.0, green: 225.0/255.0, blue: 64.0/255.0, alpha: 1.0)
         for ship in spaceships {
             let item: StoreItem = Bundle.main.loadNibNamed("StoreItem", owner: self, options: nil)?.first as! StoreItem
+            item.backgroundColor = UIColor.clear
             item.imageView.image = UIImage(named: ship.imageName)
             item.nameLabel.text = ship.name
             item.priceLabel.text = "$\(ship.price)"
+
+            item.buyButton.layer.cornerRadius = item.buyButton.frame.size.height / 2
+            item.buyButton.layer.masksToBounds = true
+            item.buyButton.setGradientBackground(colorOne: pink, colorTwo: yellow)
+
             storeItems.append(item)
         }
     }
