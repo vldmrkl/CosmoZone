@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController {
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var storeButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var coinsLabel: UILabel!
     
     override func viewDidLoad() {
@@ -40,6 +41,10 @@ class HomeViewController: UIViewController {
         storeButton.layer.cornerRadius = storeButton.frame.size.height / 2
         storeButton.layer.masksToBounds = true
         storeButton.setGradientBackground(colorOne: orange, colorTwo: brightOrange)
+
+        settingsButton.layer.cornerRadius = storeButton.frame.size.height / 2
+        settingsButton.layer.masksToBounds = true
+        settingsButton.setGradientBackground(colorOne: orange, colorTwo: brightOrange)
     }
 
     @IBAction func startGame(_ sender: Any) {

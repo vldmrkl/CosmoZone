@@ -88,7 +88,7 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="XaS-tw-jXh">
-                                <rect key="frame" x="72" y="373" width="270" height="164"/>
+                                <rect key="frame" x="72" y="373" width="270" height="258"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6CN-5F-h9O">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="70"/>
@@ -117,6 +117,17 @@
                                         <connections>
                                             <segue destination="hTm-5F-yZJ" kind="presentation" modalTransitionStyle="crossDissolve" id="CTm-m1-H0i"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCX-5j-MOQ">
+                                        <rect key="frame" x="0.0" y="188" width="270" height="70"/>
+                                        <color key="backgroundColor" red="0.99215686270000003" green="0.32549019610000002" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="CLK-XQ-2qj"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="26"/>
+                                        <state key="normal" title="SETTINGS">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -159,6 +170,7 @@
                     <connections>
                         <outlet property="coinsLabel" destination="dk8-5P-1ME" id="xhU-Ob-nVp"/>
                         <outlet property="newGameButton" destination="6CN-5F-h9O" id="QT4-cM-YAr"/>
+                        <outlet property="settingsButton" destination="bCX-5j-MOQ" id="c1T-U5-w0O"/>
                         <outlet property="storeButton" destination="hHh-V6-98r" id="tsl-Az-jal"/>
                     </connections>
                 </viewController>
