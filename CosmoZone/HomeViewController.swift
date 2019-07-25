@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var storeButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var coinsLabel: UILabel!
+    @IBOutlet weak var coinsIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,13 @@ class HomeViewController: UIViewController {
         let color1 = UIColor(red: 124.0/255.0, green:77.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         let color2 = UIColor(red: 63.0/255.0, green: 29.0/255.0, blue: 203.0/255.0, alpha: 1.0)
 
-
         view.setGradientBackground(colorOne: color1, colorTwo: color2)
 
         let coins = UserDefaults.standard.integer(forKey: "coins") 
         coinsLabel.text = "\(coins)"
 
-
+        coinsLabel.layer.zPosition = 100
+        coinsIcon.layer.zPosition = 100
     }
 
     func setUpButtons() {
@@ -37,14 +38,17 @@ class HomeViewController: UIViewController {
         newGameButton.layer.cornerRadius = newGameButton.frame.size.height / 2
         newGameButton.layer.masksToBounds = true
         newGameButton.setGradientBackground(colorOne: orange, colorTwo: brightOrange)
+        newGameButton.layer.zPosition = 100
 
         storeButton.layer.cornerRadius = storeButton.frame.size.height / 2
         storeButton.layer.masksToBounds = true
         storeButton.setGradientBackground(colorOne: orange, colorTwo: brightOrange)
+        storeButton.layer.zPosition = 100
 
         settingsButton.layer.cornerRadius = storeButton.frame.size.height / 2
         settingsButton.layer.masksToBounds = true
         settingsButton.setGradientBackground(colorOne: orange, colorTwo: brightOrange)
+        settingsButton.layer.zPosition = 100
     }
 
     @IBAction func startGame(_ sender: Any) {
